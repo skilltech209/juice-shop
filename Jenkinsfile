@@ -36,7 +36,28 @@ pipeline {
         }
     }
 }
+ /* stage('Security Gate') {
+    steps {
+        script {
  
+            def report = readFile('zap-report.json')
+ 
+            def high = report.count('"riskcode":"3"')
+            def medium = report.count('"riskcode":"2"')
+            def low = report.count('"riskcode":"1"')
+ 
+            echo "High: ${high}"
+            echo "Medium: ${medium}"
+            echo "Low: ${low}"
+ 
+            if (high > 0 || medium > 0) {
+                error("Release blocked due to security findings")
+            } else {
+                echo "Security gate passed"
+            }
+        }
+    }
+} */
         
     }
 }
