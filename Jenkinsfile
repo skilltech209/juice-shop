@@ -3,11 +3,11 @@ pipeline {
  
     stages {
  
-        stage('Deploy Juice Shop') {
-            steps {
-                sh 'docker run -d --rm --name juice-shop -p 3000:3000 bkimminich/juice-shop'
-            }
-        }
+       stage('Deploy Juice Shop') {
+    steps {
+        sh '/usr/local/bin/docker run -d --rm --name juice-shop -p 3000:3000 bkimminich/juice-shop'
+    }
+}
  
         stage('Run ZAP Scan') {
             steps {
