@@ -20,7 +20,7 @@ pipeline {
                 ''' */
         stage('Run ZAP Scan') {
     steps {
-        sh '''/usr/local/bin/docker run --rm --network host ghcr.io/zaproxy/zaproxy:stable zap-baseline.py -t http://host.docker.internal:3000 || true'''
+        sh '''/usr/local/bin/docker run --rm --network host ghcr.io/zaproxy/zaproxy:stable zap-full.py -t http://host.docker.internal:3000 || true'''
     }
 }
             
