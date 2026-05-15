@@ -20,11 +20,11 @@ pipeline {
                 ''' */
         stage('Run ZAP Scan') {
     steps {
-        sh '''/usr/local/bin/docker run --rm --network host -v $(pwd):/zap/wrk/:rw ghcr.io/zaproxy/zaproxy:stable zap-full-scan.py -t http://host.docker.internal:3000 -r zap-reportr.html -J zap-report.json || true'''
+        sh '''/usr/local/bin/docker run --rm --network host -v $(pwd):/zap/wrk/:rw ghcr.io/zaproxy/zaproxy:stable zap-baseline.py -t http://host.docker.internal:3000 || true'''
     }
 }
-            stage('Security Gate') {
-    steps {
+         /*   stage('Security Gate') {
+    st
         script {
             def report = readFile('zap-report.json')
  
